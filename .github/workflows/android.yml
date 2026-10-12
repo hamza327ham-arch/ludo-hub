@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: 20
 
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: 17
@@ -38,8 +38,12 @@ jobs:
         working-directory: android-app/android
         run: ./gradlew assembleDebug
 
+      - name: Show the built files
+        run: find android-app/android -name "*.apk" -o -name "*.aab"
+
       - name: Upload the APK
         uses: actions/upload-artifact@v4
         with:
           name: LudoHub-debug-apk
-          path: android-app/android/app/build/outputs/apk/debug/ludo-hub.apk
+          path: android-app/android/app/build/outputs/apk/**/*.apk
+          if-no-files-found: error
