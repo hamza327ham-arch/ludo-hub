@@ -1,0 +1,7 @@
+node_modules/
+android-app/android/
+android-app/node_modules/
+android-app/www/index.html
+data/
+*.log
+.DS_Store

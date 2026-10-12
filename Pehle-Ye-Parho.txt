@@ -1,0 +1,58 @@
+LUDO HUB - kaise khelna hai
+
+A) AKELE YA EK DEVICE PAR (kuch install nahi karna)
+   "index.html" par double-click karo. Chrome/Edge mein khul jayegi. Internet nahi chahiye.
+   Players chuno -> "You vs computer" ya "Friends" (ek hi phone par baari baari) -> Play.
+   Dice par tap/click karo to roll hoga.
+
+B) DOSTON KE SAATH ONLINE (alag alag phone)
+   Host ke laptop par EK baar Node.js install karo (nodejs.org -> LTS). Phir:
+   1. "start.bat" par double-click karo (Mac par start.command).
+      Kala window khulega: "Friends on Wi-Fi: http://192.168.x.x:3000". Ise khula rakho.
+      Windows firewall poochhe to "Allow access" (Private network).
+   2. Browser mein naam likho -> "Create room". Room code milega.
+   3. Doston ko bhejo:
+        - "Send on WhatsApp" dabao: room ka link WhatsApp par chala jata hai. Dost link dabaye
+          to seedha room mein aa jata hai (naam pooch kar).
+        - ya sirf room code do.
+   4. Host "Start game" dabaye. 2 se 4 players.
+
+FRIENDS (dost list)
+   "Friends" button: har player ka apna friend code hota hai (jaise 8EZ7EZ).
+   - Dost ka code daalo -> "Add" -> usay request jati hai, wo "Accept" dabaye.
+   - Ya "Send on WhatsApp" se apna friend link bhejo; link kholte hi request chali jati hai.
+   - Room banane ke baad lobby mein online dosto ke samne "Invite" aata hai. Dost ko
+     "X ne invite kiya" ka notification aata hai, "Join" dabate hi wo room mein.
+   Friends list server ke "data" folder mein save rehti hai (restart ke baad bhi rehti hai).
+
+GAME KE ANDAR
+   💬 Chat (160 harf tak), 😀 emoji (8 reactions, sab ki screen par udte hain),
+   🎤 voice: pehli tap = mic on, doosri tap = mute, teesri tap = band.
+
+ZAROORI HADOOD (seedhi baat)
+   * Voice ke liye browser HTTPS maangta hai. "http://192.168.x.x" par phone mic nahi chalne deta
+     (laptop par "localhost" par chalta hai). Phones par voice ke liye server ko HTTPS par chalana
+     hoga (hosting ya tunnel, neeche dekho). Chat, emoji, friends, invite bina HTTPS ke chalte hain.
+   * Alag Wi-Fi / mobile data par dosto ke saath khelne ke liye bhi server internet par hona chahiye
+     (jaise Render/Railway/VPS par "node server.js" chalana, ya cloudflared tunnel). Ye maine yahan
+     test NAHI kiya.
+   * Voice ke liye internet ke peeche (mobile data) kabhi kabhi TURN server chahiye hota hai; abhi
+     sirf Google STUN laga hai.
+   * Koi paisa, deposit ya withdraw is game mein nahi hai.
+
+PROFILE, ACCOUNT, COINS, RANK (online server chalne par)
+   - Upar profile chip: avatar, naam, coins, rank (Bronze/Silver/Gold/Platinum/Diamond), trophies.
+   - Naya player guest hota hai: 1000 coins. "Create account" se username + password banao
+     (recovery code zaroor save karo, password bhoolne par wohi kaam aata hai).
+     App uninstall karke dobara lagao, "Login" karo: coins, rank, friends wahi wapas.
+   - Coins sirf virtual hain: koi cash value nahi, nikal nahi sakte, ek doosre ko de nahi sakte.
+   - Daily bonus (100 se 500 tak, roz ke hisaab se), coins 100 se kam hon to free refill,
+     video ad dekho to +300 coins (roz 8 tak).
+   - Lobby mein host "Entry fee" chunta hai (Free/50/100/500/1000 virtual coins). Free table par
+     winner +30 coins; fee wale table par winner saare coins le jata hai. Server ke COIN_ENTRY_FEES=0
+     se fee wale tables band ho jate hain.
+   - Trophies: jeet +25, haar -10. Leaderboard mein top 20.
+ADS / PAISA: ANDROID-ADMOB.md parho (AdMob sirf Android app ke andar chalta hai).
+
+Files: index.html (game) | server.js (online server) | engine/ (rules) | start.bat | start.command
+       test-online.js + test-economy.js (sirf developers ke liye: 38 + 19 checks) | android-app/ + ANDROID-ADMOB.md
